@@ -14,15 +14,18 @@ public class GameManager : MonoBehaviour
     public Button restartButton;
 
     public List<GameObject> targets;
+    public GameObject titleScreen;
 
     public float spawnRate = 1.0f;
 
-    void Start()
+    public void StartGame(int difficulty)
     {
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
         isGameActive = true;
+        titleScreen.gameObject.SetActive(false);
+        spawnRate /= difficulty;
     }
 
     public void GameOver()
